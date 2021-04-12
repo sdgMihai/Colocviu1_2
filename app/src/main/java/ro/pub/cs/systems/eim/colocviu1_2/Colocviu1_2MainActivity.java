@@ -1,12 +1,17 @@
 package ro.pub.cs.systems.eim.colocviu1_2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import ro.pub.cs.systems.eim.colocviu1_2.general.Constants;
 
 public class Colocviu1_2MainActivity extends AppCompatActivity {
 
@@ -41,5 +46,14 @@ public class Colocviu1_2MainActivity extends AppCompatActivity {
 
         next_term.setText(String.valueOf(0));
         addButton.setOnClickListener(buttonClickListener);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode == RESULT_OK) {
+
+            Toast.makeText(this, "The activity returned with result " + intent.getExtras().getString(Constants.ALL_TERMS), Toast.LENGTH_LONG).show();
+        }
     }
 }

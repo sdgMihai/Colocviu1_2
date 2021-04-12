@@ -1,5 +1,7 @@
 package ro.pub.cs.systems.eim.colocviu1_2;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -33,5 +35,10 @@ public class Colocviu1_2SecondaryActivity extends AppCompatActivity {
                 sum += Integer.valueOf(element);
             }
         }
+        intent.putExtra(Constants.ALL_TERMS, String.valueOf(sum));
+        setResult(RESULT_OK, intent);
+        finish();
     }
+
+
 }
