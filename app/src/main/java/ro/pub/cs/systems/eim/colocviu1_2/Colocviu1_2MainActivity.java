@@ -17,6 +17,7 @@ import ro.pub.cs.systems.eim.colocviu1_2.general.Constants;
 public class Colocviu1_2MainActivity extends AppCompatActivity {
 
     private Button addButton;
+    private Button compute;
     private ButtonClickListener buttonClickListener = new ButtonClickListener();
     private EditText next_term;
     private TextView all_terms;
@@ -49,9 +50,12 @@ public class Colocviu1_2MainActivity extends AppCompatActivity {
         addButton = (Button)findViewById(R.id.add);
         next_term = (EditText)findViewById(R.id.next_term);
         all_terms = (TextView)findViewById(R.id.all_terms);
+        compute = (Button)findViewById(R.id.compute);
 
         next_term.setText(String.valueOf(0));
         addButton.setOnClickListener(buttonClickListener);
+        compute.setOnClickListener(buttonClickListener);
+
     }
 
     @Override
