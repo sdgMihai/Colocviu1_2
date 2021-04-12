@@ -1,5 +1,6 @@
 package ro.pub.cs.systems.eim.colocviu1_2;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +31,12 @@ public class Colocviu1_2MainActivity extends AppCompatActivity {
                     if (next_term_string.length() != 0)
                         all_terms.setText(all_terms.getText() + " + " + next_term_string);
                     break;
-
+                case R.id.compute:
+                    Intent intent = new Intent(getApplicationContext(), Colocviu1_2SecondaryActivity.class);
+                    String string = all_terms.getText().toString();
+                    intent.putExtra(Constants.ALL_TERMS, string);
+                    startActivityForResult(intent, 2021);
+                    break;
             }
         }
     }
@@ -46,6 +52,22 @@ public class Colocviu1_2MainActivity extends AppCompatActivity {
 
         next_term.setText(String.valueOf(0));
         addButton.setOnClickListener(buttonClickListener);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(Constants.ALL_TERMS, all_terms.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey(Constants.ALL_TERMS)) {
+            all_terms.setText(savedInstanceState.getString(Constants.ALL_TERMS));
+        } else {
+            all_terms.setText(String.valueOf(0));
+        }
     }
 
     @Override
